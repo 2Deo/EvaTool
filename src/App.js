@@ -22,7 +22,6 @@ class App extends Component {
         <div className="App">
           <Navigation />
           <Routes />
-          <Batch content="Batch" />
         </div>
       </MuiThemeProvider>
     )

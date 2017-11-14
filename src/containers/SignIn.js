@@ -12,7 +12,7 @@ import Title from '../components/Title'
 const dialogStyle = {
   width: '400px',
   margin: '50px auto',
-  padding: '2rem',
+  padding: '3rem',
 }
 
 const buttonStyle = {
