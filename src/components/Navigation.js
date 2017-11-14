@@ -9,7 +9,7 @@ import IconButton from 'material-ui/IconButton'
 import LocalDining from 'material-ui/svg-icons/maps/local-dining'
 import FlatButton from 'material-ui/FlatButton'
 
-const TITLE = 'EvaTool' 
+const TITLE = 'EvaTool'
 
 class Navigation extends PureComponent {
   static propTypes = {
@@ -35,7 +35,7 @@ class Navigation extends PureComponent {
     const { signedIn } = this.props
     return (
       <AppBar
-        title="{TITLE}"
+        title="Evaluation Tool"
         iconElementLeft={<IconButton onClick={this.goHome}><LocalDining /></IconButton>}
         iconElementRight={signedIn ?
           <FlatButton label="Sign out" onClick={this.signOut.bind(this)} /> :
