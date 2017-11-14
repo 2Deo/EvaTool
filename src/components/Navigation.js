@@ -9,9 +9,13 @@ import IconButton from 'material-ui/IconButton'
 import LocalDining from 'material-ui/svg-icons/maps/local-dining'
 import FlatButton from 'material-ui/FlatButton'
 
+const TITLE = 'EvaTool' 
+
 class Navigation extends PureComponent {
   static propTypes = {
     signedIn: PropTypes.bool.isRequired,
+    push: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired
   }
 
   signOut(event) {
@@ -31,7 +35,7 @@ class Navigation extends PureComponent {
     const { signedIn } = this.props
     return (
       <AppBar
-        title="Batches"
+        title="{TITLE}"
         iconElementLeft={<IconButton onClick={this.goHome}><LocalDining /></IconButton>}
         iconElementRight={signedIn ?
           <FlatButton label="Sign out" onClick={this.signOut.bind(this)} /> :
@@ -40,9 +44,10 @@ class Navigation extends PureComponent {
       />
     )
   }
+}
 
 const mapStateToProps = ({ currentUser }) => ({
   signedIn: (!!currentUser && !!currentUser._id)
 })
 
-export default connect(mapStateToProps, { push })(Navigation)
+export default connect(mapStateToProps, { push, signOut })(Navigation)
