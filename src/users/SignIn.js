@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
-import signUp from '../actions/user/sign-up'
+import signIn from '../actions/user/sign-in'
 import Title from '../components/Title'
 
 const dialogStyle = {
@@ -20,24 +20,24 @@ const buttonStyle = {
   marginLeft: '2rem',
 }
 
-export class SignUp extends PureComponent {
+export class SignIn extends PureComponent {
   submitForm(event) {
     const user = {
       email: this.refs.email.value,
       password: this.refs.password.value
     }
-    this.props.signUp(user)
+    this.props.signIn(user)
 
   }
 
-  signIn() {
-    history.push('/sign-in')
+  signUp() {
+    history.push('/sign-up')
   }
 
   render() {
     return (
       <Paper style={ dialogStyle }>
-        <Title content="Sign Up" />
+        <Title content="Sign In" />
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
@@ -47,12 +47,12 @@ export class SignUp extends PureComponent {
             <TextField ref="password" type="password" hintText="Password"  />
           </div>
           <FlatButton
-            onClick={ this.signIn }
-            label="Sign in" />
+            onClick={ this.signUp }
+            label="Sign up" />
           <RaisedButton
             style={ buttonStyle }
             onClick={ this.submitForm.bind(this) }
-            label="Sign up"
+            label="Sign in"
             primary={true} />
         </form>
       </Paper>
@@ -60,4 +60,4 @@ export class SignUp extends PureComponent {
   }
 }
 
-export default connect(null, { signUp })(SignUp)
+export default connect(null, { signIn })(SignIn)
