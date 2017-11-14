@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/theme'
+import Batch from './components/Batch'
 
 import './App.css'
 
@@ -19,9 +20,8 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
-          <LoadErrorMessage />
-          <Loading />
-          <RecipesContainer />
+
+          <Batch content="Batch" />
         </div>
       </MuiThemeProvider>
     )
