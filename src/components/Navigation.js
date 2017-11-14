@@ -10,7 +10,14 @@ import LocalDining from 'material-ui/svg-icons/maps/local-dining'
 import FlatButton from 'material-ui/FlatButton'
 
 class Navigation extends PureComponent {
-  // ...
+  static propTypes = {
+    signedIn: PropTypes.bool.isRequired,
+  }
+
+  signOut(event) {
+    event.preventDefault()
+    this.props.signOut()
+  }
 
   signUp() {
     this.props.push('/sign-up')
@@ -24,7 +31,7 @@ class Navigation extends PureComponent {
     const { signedIn } = this.props
     return (
       <AppBar
-        title="Recipes"
+        title="Batches"
         iconElementLeft={<IconButton onClick={this.goHome}><LocalDining /></IconButton>}
         iconElementRight={signedIn ?
           <FlatButton label="Sign out" onClick={this.signOut.bind(this)} /> :
@@ -34,6 +41,8 @@ class Navigation extends PureComponent {
     )
   }
 
-const mapStateToProps = // ...
+const mapStateToProps = ({ currentUser }) => ({
+  signedIn: (!!currentUser && !!currentUser._id)
+})
 
 export default connect(mapStateToProps, { push })(Navigation)
