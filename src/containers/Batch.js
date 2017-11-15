@@ -1,65 +1,28 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { fetchBatches } from '../actions/batch'
-import PropTypes from 'prop-types'
-import { GridList, GridTile } from 'material-ui/GridList'
-import IconButton from 'material-ui/IconButton'
+import Paper from 'material-ui/Paper'
+import Title from '../components/Title'
+import { push } from 'react-router-redux'
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 600,
-    height: 450,
-    overflowY: 'auto',
-  },
-};
-  // class Students extends PureComponent {
-  //   static propTypes ={
-  //     name: PropTypes.string.isRequired,
-  //     photo: PropTypes.string.isRequired,
-  //     evaluations: PropTypes.string
-  //   }
-  // }
 
-// Students.propTypes = {
-//   batch: PropTypes.object({
-//     batchNumber: PropTypes.number,
-//     students: PropTypes.arrayOf(students),
-//     startDate: PropTypes.string.isRequired,
-//     endDate: PropTypes.string.isRequired,
-//   })
-// }
-const students = []
 
-// class Batch extends PureComponent {
-//   static propTypes = {
-//   batch: PropTypes.object({
-//     batchNumber: PropTypes.number,
-//     students: PropTypes.arrayOf(students),
-//     startDate: PropTypes.string.isRequired,
-//     endDate: PropTypes.string.isRequired,
-//
-//     })
-//   }
-  // componentWillMount() {
-  //   const { batch, fetchBatches } = this.props
-  //   const { batchId } = this.props.match.params
-  //   this.props.fetchBatches(batchId)
-  // }
+class Batch extends PureComponent {
 
-//   render(){
-//     return(
-//       <div className="Batch" >
-//
-//       </div>
-//     )
-//   }
-// }
-//
-// const mapStateToProps = ({batch}) => ({batch})
-//
-// export default connect(mapStateToProps)(Batch)
+  goToBatch() {
+    this.props.push(`/batches/${this.props._id}`)
+  }
+
+  render(){
+    const { batchNumber, startDate, endDate } = this.props
+
+    return(
+      <div>
+        <Paper onClick={this.goToBatch.bind(this)} className="dialogStyle" zDepth={3}>
+          <Title content={ "Batch #" + batchNumber}/>
+        </Paper>
+      </div>
+    )
+  }
+}
+
+export default connect(null, { push })(Batch)
