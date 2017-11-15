@@ -14,7 +14,8 @@ class Navigation extends PureComponent {
   static propTypes = {
     signedIn: PropTypes.bool.isRequired,
     push: PropTypes.func.isRequired,
-    signOut: PropTypes.func.isRequired
+    signOut: PropTypes.func.isRequired,
+    goHome: PropTypes.func.isRequired
   }
 
   signOut(event) {
