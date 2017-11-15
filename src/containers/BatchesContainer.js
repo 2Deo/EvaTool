@@ -3,8 +3,7 @@ import Title from '../components/Title'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import Batch from './Batch.js'
-import fetchBatches from '../actions/batches/fetch'
-import './Batches.css'
+import fetchBatches from '../actions/batch/fetch'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 
