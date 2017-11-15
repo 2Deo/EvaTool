@@ -4,7 +4,8 @@ import { Route } from 'react-router-dom'
 import {
   BatchesContainer,
   SignIn,
-  SignUp
+  SignUp,
+  BatchForm
 } from './containers'
 
 export default class Routes extends Component {
@@ -14,6 +15,7 @@ export default class Routes extends Component {
         <Route exact path="/" component={BatchesContainer} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
+        <Route path="/batches/:batchId" component={BatchForm} />
       </div>
     )
   }

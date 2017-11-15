@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import Title from '../components/Title'
 import Paper from 'material-ui/Paper'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import Student from './Student'
 
 
 const dialogStyle = {
@@ -13,58 +11,38 @@ const dialogStyle = {
   padding: '2rem',
 }
 
-const style = {
-  marginRight: 20,
-}
 
 class BatchForm extends PureComponent {
-
-  static propTypes = {
-    createBatch: PropTypes.func.isRequired,
+  componentWillMount() {
+    const { batchId } = this.props.match.params
+    this.props.getBatch(batchId)
   }
 
-  state = {}
+  renderStudents(student, index) {
+    return (
+      <Student key={index} {...student} />
+    )
+  }
 
-  submitForm(event) {
-    event.preventDefault()
-      const batch = {
-        batchNumber: this.refs.batchNumber.getValue(),
-        startDate: this.refs.startDate.getValue(),
-        endDate: this.refs.endDate.getValue()
-      }
-      this.props.createBatch(batch)
-      this.refs.form.reset()
-    }
 
   render() {
-    return (
-      <Paper style={ dialogStyle }>
-        <Title content="Add New Batch" level={2} />
+    const { currentBatch } = this.props
+    if (!currentBatch) return null
+    const  { batchNumber, startDate, endDate, students } = this.props.currentBatch
 
-        <form onSubmit={this.submitForm.bind(this)} ref="form">
-          <div className="input">
-            <h4>Batch number: </h4>
-            <TextField ref="batchNumber" type="number" placeholder="#" />
-          </div>
-          <div className="input">
-            <h4>Start Date: </h4>
-            <TextField ref="startDate" type="date"   />
-          </div>
-          <div className="input">
-            <h4>End Date: </h4>
-            <TextField ref="endDate" type="date"   />
-          </div>
-        </form>
-        <RaisedButton
-          style={ buttonStyle }
-          onClick={ this.submitForm.bind(this) }
-          label="Add"
-          primary={true} />
-      </Paper>
+    return (
+      <div>
+        <Paper style={ dialogStyle }>
+        <Title content={`Batch #${batchNumber}`} />
+        <main className="Students">
+         { students && students.map(this.renderStudents) }
+        </main>
+        </Paper>
+      </div>
     )
   }
 }
 
-const mapStateToProps = ({ batch }) => ({ batch })
+const mapStateToProps = ({ currentBatch }) => ({ currentBatch })
 
 export default connect(mapStateToProps)(BatchForm)
