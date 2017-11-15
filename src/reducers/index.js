@@ -1,1 +1,5 @@
-export default {} // empty for now!
+import batches from './batches'
+
+export default {
+  batches
+}

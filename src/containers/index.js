@@ -1,9 +1,11 @@
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import Batches from './Batches'
+import Batch from './Batch'
+import BatchesContainer from './BatchesContainer'
 
 export {
-  Batches,
+  Batch,
+  BatchesContainer,
   SignIn,
   SignUp,
 }
