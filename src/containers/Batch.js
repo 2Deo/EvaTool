@@ -4,6 +4,12 @@ import Paper from 'material-ui/Paper'
 import Title from '../components/Title'
 import { push } from 'react-router-redux'
 
+const dialogStyle = {
+    width: '300px',
+    margin: '20px auto',
+    padding: '2rem',
+    cursor: 'pointer'
+}
 
 
 class Batch extends PureComponent {
@@ -17,7 +23,7 @@ class Batch extends PureComponent {
 
     return(
       <div>
-        <Paper onClick={this.goToBatch.bind(this)} className="dialogStyle" zDepth={3}>
+        <Paper style={ dialogStyle } onClick={this.goToBatch.bind(this)} className="dialogStyle" zDepth={3}>
           <Title content={ "Batch #" + batchNumber}/>
         </Paper>
       </div>
