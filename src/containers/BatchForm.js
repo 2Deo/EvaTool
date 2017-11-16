@@ -1,28 +1,24 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Title from '../components/Title'
-import Paper from 'material-ui/Paper'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import Student from './Student'
-import { addBatch } from '../actions/batch'
 import { push } from 'react-router-redux'
 import AddStudent from './AddStudent'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import fetchABatch from '../actions/batch/fetch'
-
-const dialogStyle = {
-  width: '300px',
-  margin: '30px',
-  padding: '2rem',
-}
+import { fetchABatch } from '../actions/batch/fetch'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const style = {
-  marginRight: 20,
+  marginRight: 40,
 }
 
 
 class BatchForm extends PureComponent {
   componentWillMount() {
-    const { fetchABatch, batchId } = this.props.match.params
+    const { batchId } = this.props.match.params
+
+    this.props.fetchABatch(batchId)
 
   }
 
@@ -39,19 +35,23 @@ class BatchForm extends PureComponent {
   render() {
     const { currentBatch } = this.props
     if (!currentBatch) return null
-    const  { batchNumber, startDate, endDate, students } = this.props.currentBatch
+    const  { batchNumber, startDate, endDate, students } = currentBatch
 
     return (
       <div>
-        <Paper style={ dialogStyle }>
         <Title content={`Batch #${batchNumber}`} />
         <FloatingActionButton secondary={true} style={style} onClick={this.addStudent}>
-
+          <ContentAdd />
         </FloatingActionButton>
+          <RaisedButton
+          onClick={ this.askQuestion }
+          label="Ask a Question"
+          primary={true}
+          />
         <main className="Students">
          { students && students.map(this.renderStudents) }
         </main>
-        </Paper>
+
       </div>
     )
   }
@@ -59,4 +59,4 @@ class BatchForm extends PureComponent {
 
 const mapStateToProps = ({ currentBatch }) => ({ currentBatch })
 
-export default connect (mapStateToProps, { push, addBatch }) (BatchForm)
+export default connect (mapStateToProps, { push, fetchABatch }) (BatchForm)

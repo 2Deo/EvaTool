@@ -28,10 +28,10 @@ export class AddStudent extends PureComponent {
       evaluation: [{evaluation: 0}]
     }
 
-    const batchId = window.location.pathname.replace('/batches/','').replace('/add-student','')
-    this.props.addStudent(Student, batchId)
-    this.props.push(`/batches/${batchId}`)
-  }
+  const batchId = window.location.pathname.replace('/batches/','').replace('/add-student','')
+  this.props.addStudent(Student, batchId)
+  this.props.push(`/batches/${batchId}`)
+}
 
   render() {
     return (
@@ -41,7 +41,7 @@ export class AddStudent extends PureComponent {
 
           <form onSubmit={this.submitForm.bind(this)}>
             <div className="input">
-              <TextField ref="name" type="text" hintText="Full name" />
+              <TextField ref="name" type="text" hintText="Name" />
             </div>
             <div className="input">
               <TextField ref="imageUrl" type="text" hintText="Image URL" />
@@ -58,8 +58,6 @@ export class AddStudent extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({
-  signedIn: !!currentUser && !!currentUser._id,
-})
+const mapStateToProps = ({ currentUser }) => ({signedIn: !!currentUser && !!currentUser._id,})
 
 export default connect(mapStateToProps, { push, addStudent })(AddStudent)

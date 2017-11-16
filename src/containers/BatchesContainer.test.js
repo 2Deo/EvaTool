@@ -3,7 +3,7 @@ import chai, { expect } from 'chai'
 import { shallow } from 'enzyme'
 import chaiEnzyme from 'chai-enzyme'
 import BatchesContainer from './BatchesContainer'
-import store from './store'
+import store from '../store'
 
 
 chai.use(chaiEnzyme())
