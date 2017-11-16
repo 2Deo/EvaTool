@@ -4,12 +4,14 @@ import Title from '../components/Title'
 import Paper from 'material-ui/Paper'
 import Student from './Student'
 import { addBatch } from '../actions/batch'
+import { push } from 'react-router-redux'
 
 const dialogStyle = {
   width: '300px',
   margin: '30px',
   padding: '2rem',
 }
+
 
 var dateFormat = require('dateformat')
 var now = new Date()
@@ -50,4 +52,4 @@ class BatchForm extends PureComponent {
 
 const mapStateToProps = ({ currentBatch }) => ({ currentBatch })
 
-export default connect (mapStateToProps, { addBatch }) (BatchForm)
+export default connect (mapStateToProps, { push, addBatch }) (BatchForm)
