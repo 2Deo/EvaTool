@@ -3,10 +3,10 @@ import Title from '../components/Title'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import Batch from './Batch.js'
-import fetchBatches from '../actions/batch/fetch'
+import { fetchBatches } from '../actions/batch'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-
+import './BatchesContainer.css'
 
 const style = {
   marginRight: 20,
@@ -47,7 +47,8 @@ export class BatchesContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ batches }) => ({ batches })
+
+const mapStateToProps = ({ batches, currentUser }) => ({ batches, signedIn: !!currentUser && !!currentUser._id, })
 const mapDispatchToProps = { fetchBatches, push }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchesContainer)

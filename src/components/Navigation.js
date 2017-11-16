@@ -17,16 +17,16 @@ class Navigation extends PureComponent {
     signOut: PropTypes.func.isRequired
   }
 
-  signOut(event) {
+  signOut = (event) => {
     event.preventDefault()
     this.props.signOut()
   }
 
-  signUp() {
+  signUp = () => {
     this.props.push('/sign-up')
   }
 
-  goHome() {
+  goHome = () => {
     this.props.push('/')
   }
 

@@ -11,7 +11,7 @@ dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT")
 
 class Batch extends PureComponent {
 
-  fetchABatch() {
+  goToBatch() {
     this.props.push(`/batches/${this.props._id}`)
   }
 
@@ -20,7 +20,7 @@ class Batch extends PureComponent {
 
     return(
       <div>
-        <Paper onClick={this.fetchABatch.bind(this)} className="dialogStyle" zDepth={3}>
+        <Paper onClick={this.goToBatch.bind(this)} className="dialogStyle" zDepth={3}>
           <Title content={ "Batch #" + batchNumber}/>
           <p> start: {dateFormat(startDate, "longDate")} </p>
           <p> end: {dateFormat(endDate, "longDate")} </p>

@@ -5,7 +5,7 @@ export default (state = [], { type, payload } = {}) => {
   switch(type) {
     // some actions include a payload that we can use to update the state
     // in this case the payload will contain a new batch
-    case 'FETCH_BATCHES':
+    case FETCH_BATCHES:
       return [...payload]
     // by default we return the existing state
     default :
