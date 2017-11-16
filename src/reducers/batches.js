@@ -7,10 +7,6 @@ export default (state = [], { type, payload } = {}) => {
     // in this case the payload will contain a new batch
     case 'FETCH_BATCHES':
       return [...payload]
-
-    // optionally some other cases
-    // ...
-
     // by default we return the existing state
     default :
       return state
