@@ -4,12 +4,13 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import Batch from './Batch.js'
 import fetchBatches from '../actions/batch/fetch'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+
 
 const style = {
   marginRight: 20,
-}
+};
 
 export class BatchesContainer extends PureComponent {
 
@@ -28,13 +29,14 @@ export class BatchesContainer extends PureComponent {
   }
 
   render() {
+
     return(
       <div >
         <header>
           <Title content="Batches" />
-          <FloatingActionButton secondary={true} style={style} onClick={this.addBatch}>
-            <ContentAdd />
-          </FloatingActionButton>
+            <FloatingActionButton secondary={true} style={style} onClick={this.addBatch}>
+          <ContentAdd />
+            </FloatingActionButton>
         </header>
 
         <main className="Batches">

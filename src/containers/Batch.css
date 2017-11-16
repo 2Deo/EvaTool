@@ -1,0 +1,13 @@
+.dialogStyle {
+    width: 300px;
+    margin: 20px auto;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+.dialogStyle:hover {
+  color: red;
+  translateX: 2px;
+  translateY: 2px;
+
+}
