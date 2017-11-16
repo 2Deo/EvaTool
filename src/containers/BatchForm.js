@@ -5,6 +5,9 @@ import Paper from 'material-ui/Paper'
 import Student from './Student'
 import { addBatch } from '../actions/batch'
 import { push } from 'react-router-redux'
+import AddStudent from './AddStudent'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import fetchABatch from '../actions/batch/fetch'
 
 const dialogStyle = {
   width: '300px',
@@ -12,15 +15,15 @@ const dialogStyle = {
   padding: '2rem',
 }
 
+const style = {
+  marginRight: 20,
+}
 
-var dateFormat = require('dateformat')
-var now = new Date()
-dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT")
 
 class BatchForm extends PureComponent {
   componentWillMount() {
-    const { batchId } = this.props.match.params
-    this.props.fetchABatch(batchId)
+    const { fetchABatch, batchId } = this.props.match.params
+
   }
 
   renderStudents(student, index) {
@@ -29,6 +32,9 @@ class BatchForm extends PureComponent {
     )
   }
 
+  addStudent = () => {
+    this.props.push(`${window.location.pathname}/add-student`)
+  }
 
   render() {
     const { currentBatch } = this.props
@@ -39,8 +45,9 @@ class BatchForm extends PureComponent {
       <div>
         <Paper style={ dialogStyle }>
         <Title content={`Batch #${batchNumber}`} />
-        <p> start: {dateFormat(startDate, "longDate")} </p>
-        <p> end: {dateFormat(endDate, "longDate")} </p>
+        <FloatingActionButton secondary={true} style={style} onClick={this.addStudent}>
+
+        </FloatingActionButton>
         <main className="Students">
          { students && students.map(this.renderStudents) }
         </main>

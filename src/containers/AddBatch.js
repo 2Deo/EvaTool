@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import Paper from 'material-ui/Paper'
-import addBatch from '../actions/batches/add'
+import addBatch from '../actions/batch/add'
 import Title from '../components/Title'
 import DatePicker from 'material-ui/DatePicker'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -34,7 +34,8 @@ export class AddBatch extends PureComponent {
       startDate: this.refs.startDate.state.date,
       endDate: this.refs.endDate.state.date
     }
-    console.log(Batch)
+
+
     this.props.addBatch(Batch)
     this.props.push('/')
   }
@@ -46,7 +47,7 @@ export class AddBatch extends PureComponent {
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
-            <TextField ref="batchNumber" type="text" hintText="12" />
+            <TextField ref="batchNumber" type="text" hintText="01" />
           </div>
           <div className="input">
             <DatePicker ref="startDate" hintText="Start date" />
@@ -63,8 +64,7 @@ export class AddBatch extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({
-  signedIn: !!currentUser && !!currentUser._id,
-})
+
+const mapStateToProps = ({ batches }) => ({ batches })
 
 export default connect(mapStateToProps, { push, addBatch })(AddBatch)
