@@ -3,18 +3,15 @@ import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import Title from '../components/Title'
 import { push } from 'react-router-redux'
+import './Batch.css'
 
-const dialogStyle = {
-    width: '300px',
-    margin: '20px auto',
-    padding: '2rem',
-    cursor: 'pointer'
-}
-
+var dateFormat = require('dateformat')
+var now = new Date()
+dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT")
 
 class Batch extends PureComponent {
 
-  goToBatch() {
+  fetchABatch() {
     this.props.push(`/batches/${this.props._id}`)
   }
 
@@ -23,8 +20,10 @@ class Batch extends PureComponent {
 
     return(
       <div>
-        <Paper style={ dialogStyle } onClick={this.goToBatch.bind(this)} className="dialogStyle" zDepth={3}>
+        <Paper onClick={this.fetchABatch.bind(this)} className="dialogStyle" zDepth={3}>
           <Title content={ "Batch #" + batchNumber}/>
+          <p> start: {dateFormat(startDate, "longDate")} </p>
+          <p> end: {dateFormat(endDate, "longDate")} </p>
         </Paper>
       </div>
     )
