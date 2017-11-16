@@ -4,7 +4,6 @@ import Title from '../components/Title'
 import Paper from 'material-ui/Paper'
 import Student from './Student'
 import { push } from 'react-router-redux'
-import fetchABatch from '../actions/batch'
 
 const dialogStyle = {
   width: '300px',
@@ -46,4 +45,4 @@ class BatchForm extends PureComponent {
 
 const mapStateToProps = ({ currentBatch }) => ({ currentBatch })
 
-export default connect (mapStateToProps, { push, fetchABatch }) (BatchForm)
+export default connect (mapStateToProps, { push }) (BatchForm)

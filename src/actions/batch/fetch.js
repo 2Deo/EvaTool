@@ -53,7 +53,8 @@ export const fetchABatch=(batchId) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({
         type: LOAD_ERROR,
-        payload: error.message})
+        payload: error.message
+      })
     })
   }
 }

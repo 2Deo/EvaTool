@@ -6,7 +6,7 @@ import {
   SignIn,
   SignUp,
   BatchForm,
-  AddBatch
+
 } from './containers'
 
 export default class Routes extends Component {
@@ -17,7 +17,7 @@ export default class Routes extends Component {
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
         <Route path="/batches/:batchId" component={BatchForm} />
-        <Route path="/add-batch" component={AddBatch} />
+
       </div>
     )
   }
