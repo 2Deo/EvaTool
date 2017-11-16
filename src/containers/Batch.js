@@ -6,8 +6,7 @@ import { push } from 'react-router-redux'
 import './Batch.css'
 
 var dateFormat = require('dateformat')
-var now = new Date()
-dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT")
+
 
 class Batch extends PureComponent {
 
