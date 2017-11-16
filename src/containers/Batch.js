@@ -19,7 +19,7 @@ class Batch extends PureComponent {
 
     return(
       <div>
-        <Paper onClick={this.goToBatch.bind(this)} className="dialogStyle" zDepth={3}>
+        <Paper onClick={this.goToBatch.bind(this)} className="dialogStyle" zDepth={2}>
           <Title content={ "Batch #" + batchNumber}/>
           <p> start: {dateFormat(startDate, "longDate")} </p>
           <p> end: {dateFormat(endDate, "longDate")} </p>
