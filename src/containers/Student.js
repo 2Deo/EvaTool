@@ -24,4 +24,4 @@ class Student extends PureComponent {
   }
 }
 
-export default connect(null, { push }) (Student) 
+export default connect(null, { push }) (Student)

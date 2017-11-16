@@ -34,7 +34,7 @@ export class BatchesContainer extends PureComponent {
     return(
       <div >
         <header>
-          <Title content="Batches Container" />
+          <Title content="Batches" />
           <FloatingActionButton secondary={true} style={style} onClick={this.addBatch}>
           <ContentAdd />
           </FloatingActionButton>
