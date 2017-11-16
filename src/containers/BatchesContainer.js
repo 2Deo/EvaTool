@@ -6,6 +6,7 @@ import { fetchBatches } from '../actions/batch'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import './BatchesContainer.css'
+import Batch from './Batch.js'
 
 
 const style = {
@@ -18,7 +19,11 @@ export class BatchesContainer extends PureComponent {
     this.props.fetchBatches()
   }
 
- goToBatch = batchId => event => this.props.push(`/batches/${batchId}`)
+ goToBatch(batch, index) {
+   return (
+     <Batch key={index} {...batch} />
+   )
+ }
 
  addBatch = () => {
   this.props.push('/add-batch')
