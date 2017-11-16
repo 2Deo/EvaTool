@@ -35,8 +35,8 @@ export class AddBatch extends PureComponent {
       endDate: this.refs.endDate.state.date
     }
 
-
-    this.props.addBatch(Batch)
+    const batches = this.props.batches
+    this.props.addBatch(Batch, batches)
     this.props.push('/')
   }
 
@@ -44,7 +44,6 @@ export class AddBatch extends PureComponent {
     return (
       <Paper style={ dialogStyle }>
         <Title content="Add Batch" level={2} />
-
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
             <TextField ref="batchNumber" type="text" hintText="01" />
