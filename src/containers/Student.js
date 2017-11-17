@@ -12,6 +12,10 @@ const dialogStyle = {
 }
 
 class Student extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
   render() {
     const { name } = this.props

@@ -7,7 +7,6 @@ import './Batch.css'
 
 var dateFormat = require('dateformat')
 
-
 class Batch extends PureComponent {
 
   goToBatch() {
