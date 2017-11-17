@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Title from '../components/Title'
 import addStudent from '../actions/students/add'
+import PropTypes from 'prop-types'
 
 const dialogStyle = {
   width: '400px',
@@ -18,18 +19,24 @@ const buttonStyle = {
   marginTop: '2rem',
 }
 
-export class AddStudent extends PureComponent {
+class AddStudent extends PureComponent {
+  static propTypes = {
+    addStudent: PropTypes.func.isRequired,
+    batchId: PropTypes.string,
+    photo: PropTypes.string
+  }
 
   submitForm(event) {
     event.preventDefault()
-    const Student = {
+    const { batchId } = this.props
+    const student = {
       name: this.refs.name.getValue(),
       photo: this.refs.photo.getValue(),
-      evaluation: [{evaluation: 0}]
+      evaluation: [{evaluation: 0}],
+      batchId: batchId
     }
 
-  const batchId = window.location.pathname.replace('/batches/','').replace('/add-student','')
-  this.props.addStudent(Student, batchId)
+  this.props.addStudent(student, batchId)
   this.props.push(`/batches/${batchId}`)
 }
 
@@ -58,6 +65,6 @@ export class AddStudent extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({signedIn: !!currentUser && !!currentUser._id,})
+const mapStateToProps = ({ student }) => ({ student })
 
 export default connect(mapStateToProps, { push, addStudent })(AddStudent)

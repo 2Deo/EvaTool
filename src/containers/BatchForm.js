@@ -32,6 +32,9 @@ class BatchForm extends PureComponent {
     this.props.push(`${window.location.pathname}/add-student`)
   }
 
+// implementing algorithm for picking a student
+
+
   render() {
     const { currentBatch } = this.props
     if (!currentBatch) return null
